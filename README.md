@@ -1,2 +1,2 @@
 # ecommerce-core-angular
-## Test
+## To run the project: cd API -> dotnet watchrun
