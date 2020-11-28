@@ -12,3 +12,4 @@
 # Angular
 ### Create Angular project - `ng new client` -> y for routing
 ### TO run the project -  cd client -> `ng serve`
+### Add bootstrap and fontawesome to project - `ng add ngx-bootstrap` `npm install font-awesome`
