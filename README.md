@@ -14,3 +14,5 @@
 ### TO run the project -  cd client -> `ng serve`
 ### Add bootstrap and fontawesome to project - `ng add ngx-bootstrap` `npm install font-awesome`
 ### Generate angular component cd client\src\_FLD_ -> `ng g c __NAME__`, and without tests: `src\app> ng g c __NAME__--skip-tests`
+### Create module: `ng g m __NAME__`
+### Create service: `ng g s __NAME__`
