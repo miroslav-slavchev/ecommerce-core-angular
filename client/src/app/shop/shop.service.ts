@@ -15,11 +15,11 @@ export class ShopService {
   getProducts(brandId?: number, typeId?: number) {
     let params = new HttpParams();
 
-    if (brandId != null) {
+    if (brandId) {
       params = params.append('brandId', brandId.toString());
     }
 
-    if (typeId != null) {
+    if (typeId) {
       params = params.append('typeId', typeId.toString());
     }
 
