@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { element } from 'protractor';
 import { IBrand } from '../shared/models/brand';
 import { IProduct } from '../shared/models/product';
 import { IType } from '../shared/models/productType';
@@ -15,9 +16,14 @@ export class ShopComponent implements OnInit {
   types: IType[] = [];
   brandIdSelected = 0;
   typeIdSelected = 0;
+  sortSelected = 'name';
+  sortOptions = [
+    { name: 'Alphabetical', value: 'name' },
+    { name: 'Price Low to High', value: 'priceAsc' },
+    { name: 'Price: High to Low', value: 'priceDesc' },
+  ];
 
-  constructor(private shopService: ShopService) {
-  }
+  constructor(private shopService: ShopService) {}
 
   ngOnInit(): void {
     this.getProducts();
@@ -27,7 +33,7 @@ export class ShopComponent implements OnInit {
 
   getProducts(): void {
     this.shopService
-      .getProducts(this.brandIdSelected, this.typeIdSelected)
+      .getProducts(this.brandIdSelected, this.typeIdSelected, this.sortSelected)
       .subscribe(
         (response) => {
           if (response) {
@@ -43,7 +49,7 @@ export class ShopComponent implements OnInit {
   getBrands(): void {
     this.shopService.getBrands().subscribe(
       (response) => {
-        this.brands = [{ id: 0, name: 'All'}, ...response ];
+        this.brands = [{ id: 0, name: 'All' }, ...response];
       },
       (error) => {
         console.log(error);
@@ -54,7 +60,7 @@ export class ShopComponent implements OnInit {
   getTypes(): void {
     this.shopService.getTypes().subscribe(
       (response) => {
-        this.types = [{ id: 0, name: 'All'}, ...response ];
+        this.types = [{ id: 0, name: 'All' }, ...response];
       },
       (error) => {
         console.log(error);
@@ -69,6 +75,11 @@ export class ShopComponent implements OnInit {
 
   onTypeSelected(typeId: number): void {
     this.typeIdSelected = typeId;
+    this.getProducts();
+  }
+
+  onSortSelected(sort: string): void{
+    this.sortSelected = sort;
     this.getProducts();
   }
 }
