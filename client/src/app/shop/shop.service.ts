@@ -24,6 +24,10 @@ export class ShopService {
       params = params.append('typeId', shopParams.typeId.toString());
     }
 
+    if (shopParams.search) {
+      params = params.append('search', shopParams.search);
+    }
+
     params = params.append('sort', shopParams.sort.toString());
     params = params.append('pageIndex', shopParams.pageNumber.toString());
     params = params.append('pageIndex', shopParams.pageSize.toString());
@@ -48,5 +52,4 @@ export class ShopService {
   getTypes() {
     return this.http.get<IType[]>(this.baseUrl + 'products' + '/types');
   }
-
 }
