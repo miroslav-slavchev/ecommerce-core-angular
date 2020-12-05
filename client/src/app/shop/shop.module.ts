@@ -6,6 +6,7 @@ import { SharedModule } from '../shared/shared.module';
 import { PagingHeaderComponent } from '../shared/components/paging-header/paging-header.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { RouterModule } from '@angular/router';
+import { ShopRoutingModule } from './shop-routing.module';
 
 
 
@@ -14,8 +15,7 @@ import { RouterModule } from '@angular/router';
   imports: [
     SharedModule,
     CommonModule,
-    RouterModule
-  ],
-  exports: [ShopComponent]
+    ShopRoutingModule
+  ]
 })
 export class ShopModule { }
